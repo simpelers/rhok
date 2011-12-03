@@ -8,6 +8,7 @@ import play.db.jpa.*;
 @Entity
 public class User extends Model {
  
+	private Incident incident;
     private String firstName;
     private String lastName;
     private String password;
@@ -26,6 +27,18 @@ public class User extends Model {
 		this.phonenumber = phonenumber;
 		this.isAdmin = isAdmin;
 		this.mLocation = mLocation;
+	}
+
+
+    @OneToOne(mappedBy = "user")
+	public Incident getIncident() {
+		return incident;
+	}
+
+
+
+	public void setIncident(Incident incident) {
+		this.incident = incident;
 	}
 
 

@@ -1,16 +1,28 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 import play.db.jpa.Model;
 
 @Entity
 public class Location extends Model
 {
-    private String mLat;
+
+	private Incident incident;
+	private String mLat;
     private String mLong;
     
-    /**
+    @OneToOne(mappedBy = "location")
+    public Incident getIncident() {
+		return incident;
+	}
+
+	public void setIncident(Incident incident) {
+		this.incident = incident;
+	}
+
+	/**
      * @param aLat
      * @param aLong
      */
@@ -51,9 +63,5 @@ public class Location extends Model
     {
         mLong = aL;
     }
-    
-    
-
-
 
 }
