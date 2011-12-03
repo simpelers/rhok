@@ -3,14 +3,13 @@ package models;
 import java.util.*;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 import play.db.jpa.Model;
 
 
 @Entity
-public class IncidentCategory extends Model{
-
+public class IncidentCategory extends Model {
+ 
 	public String name;
 	public long duration;
 	
