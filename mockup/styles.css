@@ -1,0 +1,31 @@
+ body {
+        padding-top: 60px;
+      }
+
+
+#commentTime {
+	color: #cccccc;
+	font-size:11px;
+}
+
+.zebra-striped th {
+	background:#efefef;
+}
+
+
+
+.reportInfo {
+	background:#f1f1f1;
+	padding:10px;
+
+}
+
+.reportInfoLabel{
+	text-align: left;
+	margin-right: 10px !important;
+	width: 50px !important;
+	}
+	
+.reportInfoInput {
+	width: 457px !important;
+	}
