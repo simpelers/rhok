@@ -10,6 +10,7 @@ public class Location extends Model
 {
 
 	private Incident incident;
+	private String name;
 	private String mLat;
     private String mLong;
     
@@ -22,14 +23,13 @@ public class Location extends Model
 		this.incident = incident;
 	}
 
-	/**
-     * @param aLat
-     * @param aLong
-     */
-    public Location(String aLat, String aLong)
+
+    public Location(String aName, String aLat, String aLong, Incident aIncident)
     {
+        name = aName;
         mLat = aLat;
         mLong = aLong;
+        incident = aIncident;
     }
 
     /**
