@@ -9,9 +9,9 @@ import play.jobs.*;
 public class Bootstrap extends Job {
     
     public void doJob() {
-    	Location l = new Location("123", "1243");
+    	Location l = new Location("Champ de Mars", "123", "1243");
     	l.save();
-    	Location l2 = new Location("251", "12438");
+    	Location l2 = new Location("Cite Soleil","425", "12438");
     	l2.save();
         User user1 = new User("john", "doe", "password", "5144244244", true, l);
         user1.save();

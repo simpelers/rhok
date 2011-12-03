@@ -7,6 +7,7 @@ import play.db.jpa.Model;
 @Entity
 public class Location extends Model
 {
+	private String mName;
     private String mLat;
     private String mLong;
     
@@ -14,13 +15,26 @@ public class Location extends Model
      * @param aLat
      * @param aLong
      */
-    public Location(String aLat, String aLong)
+    public Location(String aName, String aLat, String aLong)
     {
         mLat = aLat;
         mLong = aLong;
     }
 
-    /**
+    
+    public String getmName()
+    {
+		return mName;
+	}
+
+
+	public void setmName(String mName)
+	{
+		this.mName = mName;
+	}
+
+
+	/**
      * @return the lat
      */
     public String getLat()
