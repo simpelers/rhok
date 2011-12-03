@@ -8,6 +8,7 @@ test-result/
 lib/
 tmp/
 modules/
+modules/crud
 *.iml
 *.ipr
 *.iws
