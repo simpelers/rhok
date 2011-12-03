@@ -4,7 +4,6 @@
 
 # Home page
 GET     /                                       Application.index
-GET     /incidents                              IncidentController.index
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
@@ -14,3 +13,6 @@ GET     /public/                                staticDir:public
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
+
+# Import CRUD routes
+*      /admin              module:crud

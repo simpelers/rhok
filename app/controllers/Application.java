@@ -11,13 +11,13 @@ public class Application extends Controller {
 
     public static void index() {
     	try {
-			URLConnection c = new URL("http://www.rhok.org").openConnection();
-			InputStream is = c.getInputStream();
-			InputStreamReader reader = new InputStreamReader(is);
-			BufferedReader breader = new BufferedReader(reader);
-			String line = breader.readLine();
-			is.close();
-			render(line);
+//			URLConnection c = new URL("http://www.rhok.org").openConnection();
+//			InputStream is = c.getInputStream();
+//			InputStreamReader reader = new InputStreamReader(is);
+//			BufferedReader breader = new BufferedReader(reader);
+//			String line = breader.readLine();
+//			is.close();
+			render();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
