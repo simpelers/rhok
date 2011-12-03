@@ -13,16 +13,19 @@ public class Incident extends Model {
 	public long incidentDate;
 	public String incidentType; ///ENUM
 	public long duration;
-	public String location;
+	@OneToOne
+	public Location location;
 	public String direction;
 	public long latitude;
 	public long longitude;
+	
+	@OneToOne
 	public User User;
 	
 	
 	public Incident(String incidentTitle, String description,
 			long incidentDate, String incidentType, long duration,
-			String location, String direction, long latitude, long longitude,
+			Location location, String direction, long latitude, long longitude,
 			User user) 
 	{
 		super();
