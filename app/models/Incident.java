@@ -17,11 +17,14 @@ public class Incident extends Model {
 	public String direction;
 	public long latitude;
 	public long longitude;
-	public String User;
+	public User User;
+	
+	
 	public Incident(String incidentTitle, String description,
 			long incidentDate, String incidentType, long duration,
 			String location, String direction, long latitude, long longitude,
-			String user) {
+			User user) 
+	{
 		super();
 		this.incidentTitle = incidentTitle;
 		this.description = description;
