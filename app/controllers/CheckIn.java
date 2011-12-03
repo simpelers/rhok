@@ -12,15 +12,14 @@ public class CheckIn
     
     public static boolean checkin(String aPhoneNumber, Location aLocation)
     {
-        User user = User.find("byNumber", "514").first();
+        User user = User.find("phonenumber", aPhoneNumber).first();
         
         if (user == null)
         {
             return false;
         }
         
-        //User
-        
+        user.setLocation(aLocation);
         
         return true;
     }
