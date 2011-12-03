@@ -14,15 +14,6 @@ public class Application extends Controller {
 
     public static void index() {
     	try {
-			render();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        
-    }
-    
-    public static void show() {
-    	try {
     		List<Incident> all = Incident.findAll();
     		
 			render(all);
