@@ -2,7 +2,7 @@ package models;
 
 import java.util.*;
 
-import org.hibernate.annotations.Entity;
+import javax.persistence.Entity;
 
 
 @Entity
