@@ -3,7 +3,6 @@ package models;
 import java.util.*;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 
