@@ -1,7 +1,10 @@
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.CascadeType;
 
 import play.db.jpa.Model;
 
@@ -14,6 +17,14 @@ public class Location extends Model
 	private String mLat;
     private String mLong;
     
+	public Location(String aName, String aLat, String aLong, Incident aIncident)
+    {
+        setName(aName);
+        mLat = aLat;
+        mLong = aLong;
+        incident = aIncident;
+    }
+
     @OneToOne(mappedBy = "location")
     public Incident getIncident() {
 		return incident;
@@ -24,13 +35,13 @@ public class Location extends Model
 	}
 
 
-    public Location(String aName, String aLat, String aLong, Incident aIncident)
-    {
-        name = aName;
-        mLat = aLat;
-        mLong = aLong;
-        incident = aIncident;
-    }
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
     /**
      * @return the lat

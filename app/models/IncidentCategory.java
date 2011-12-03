@@ -2,10 +2,12 @@ package models;
 
 import java.util.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
+
 
 import play.db.jpa.Model;
 
@@ -13,7 +15,7 @@ import play.db.jpa.Model;
 @Entity
 public class IncidentCategory extends Model {
  
-	private List<Incident> incidents;
+//	private List<Incident> incidents;
 	public String name;
 	public long duration;
 	
@@ -23,10 +25,8 @@ public class IncidentCategory extends Model {
 		this.name = name;
 		this.duration = duration;
 	}
-
-    @OneToMany(mappedBy="software")
-    @MapKey(name="id")
-    @Column(nullable = true)
+/*
+    @OneToMany(mappedBy="incidents", cascade = CascadeType.ALL)
 	public List<Incident> getIncidents() {
 		return incidents;
 	}
@@ -34,7 +34,7 @@ public class IncidentCategory extends Model {
 	public void setIncident(List<Incident> incidents) {
 		this.incidents = incidents;
 	}
-
+*/
 	public String getName() {
 		return name;
 	}

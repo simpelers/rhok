@@ -11,7 +11,7 @@ public class Incident extends Model {
 	public String incidentTitle;
 	public String description;
 	public long incidentDate;
-	public IncidentCategory incidentCategory; ///ENUM
+//	public IncidentCategory incidentCategory; ///ENUM
 	public long duration;
 	public Location location;
 	public String direction;
@@ -21,7 +21,7 @@ public class Incident extends Model {
 	
 	
 	public Incident(String incidentTitle, String description,
-			long incidentDate, IncidentCategory incidentCategory, long duration,
+			long incidentDate, long duration,
 			Location location, String direction, long latitude, long longitude,
 			User user) 
 	{
@@ -29,7 +29,7 @@ public class Incident extends Model {
 		this.incidentTitle = incidentTitle;
 		this.description = description;
 		this.incidentDate = incidentDate;
-		this.incidentCategory = incidentCategory;
+//		this.incidentCategory = incidentCategory;
 		this.duration = duration;
 		this.location = location;
 		this.direction = direction;
@@ -38,6 +38,7 @@ public class Incident extends Model {
 		User = user;
 	}
 
+	
 	public String getIncidentTitle() {
 		return incidentTitle;
 	}
@@ -67,8 +68,8 @@ public class Incident extends Model {
 		this.incidentDate = incidentDate;
 	}
 
+/*
 	@ManyToOne
-	@Column(nullable = true)
 	public IncidentCategory getIncidentCategory() {
 		return incidentCategory;
 	}
@@ -77,7 +78,7 @@ public class Incident extends Model {
 	public void setIncidentCategory(IncidentCategory incidentCategory) {
 		this.incidentCategory = incidentCategory;
 	}
-
+*/
 
 	public long getDuration() {
 		return duration;
@@ -89,8 +90,6 @@ public class Incident extends Model {
 	}
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="location_fk")
-    @Column(nullable = true)
 	public Location getLocation() {
 		return location;
 	}
@@ -131,12 +130,9 @@ public class Incident extends Model {
 	}
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_fk")
-    @Column(nullable = true)
 	public User getUser() {
 		return User;
 	}
-
 
 	public void setUser(User user) {
 		User = user;

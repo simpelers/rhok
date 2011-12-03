@@ -17,9 +17,11 @@ public class Bootstrap extends Job {
         user1.save();
         User user2 = new User("anna", "doe", "password", "5142444433", true, l2);
         user2.save();
-        Incident i = new Incident("Gunshot", null, lastRun, null, lastRun, l, null, lastRun, lastRun, user1);
+//        Incident i = new Incident("Gunshot", null, lastRun, null, lastRun, l, null, lastRun, lastRun, user1);
+        Incident i = new Incident("Gunshot", null, lastRun, lastRun, l, null, lastRun, lastRun, user1);
         i.save();
-        Incident i2 = new Incident("Fire", null, lastRun, null, lastRun, l2, null, lastRun, lastRun, user2);
+//        Incident i2 = new Incident("Fire", null, lastRun, null, lastRun, l2, null, lastRun, lastRun, user2);
+        Incident i2 = new Incident("Fire", null, lastRun, lastRun, l2, null, lastRun, lastRun, user2);
         i2.save();
     }
     
