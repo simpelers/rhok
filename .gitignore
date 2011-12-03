@@ -2,6 +2,7 @@ bin/
 data/
 db/
 dist/
+eclipse/
 logs/
 test-result/
 lib/
@@ -12,3 +13,4 @@ modules/
 *.iws
 .classpath
 .project
+.settings/
