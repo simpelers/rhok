@@ -68,6 +68,7 @@ public class Incident extends Model {
 	}
 
 	@ManyToOne
+	@Column(nullable = true)
 	public IncidentCategory getIncidentCategory() {
 		return incidentCategory;
 	}
@@ -89,6 +90,7 @@ public class Incident extends Model {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="location_fk")
+    @Column(nullable = true)
 	public Location getLocation() {
 		return location;
 	}
@@ -130,6 +132,7 @@ public class Incident extends Model {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_fk")
+    @Column(nullable = true)
 	public User getUser() {
 		return User;
 	}

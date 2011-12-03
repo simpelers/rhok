@@ -2,6 +2,7 @@ package models;
 
 import java.util.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
@@ -12,7 +13,7 @@ import play.db.jpa.Model;
 @Entity
 public class IncidentCategory extends Model {
  
-	private Map<String, Incident> incidents;
+	private List<Incident> incidents;
 	public String name;
 	public long duration;
 	
@@ -25,11 +26,12 @@ public class IncidentCategory extends Model {
 
     @OneToMany(mappedBy="software")
     @MapKey(name="id")
-	public Map<String, Incident> getIncidents() {
+    @Column(nullable = true)
+	public List<Incident> getIncidents() {
 		return incidents;
 	}
 
-	public void setIncident(Map<String, Incident> incidents) {
+	public void setIncident(List<Incident> incidents) {
 		this.incidents = incidents;
 	}
 
