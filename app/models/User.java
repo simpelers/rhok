@@ -14,17 +14,23 @@ public class User extends Model {
     private String phonenumber;
     private boolean isAdmin;
     
+    @ManyToOne
     private Location mLocation;
     
-    public User(String aFirstName, String aLastName, String aPassword, Location aLocation) 
-    {
-        this.firstName = aFirstName;
-        this.lastName = aLastName;
-        this.password = aPassword;
-        this.mLocation = aLocation;
-    }
+    public User(String firstName, String lastName, String password,
+			String phonenumber, boolean isAdmin, Location mLocation) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.phonenumber = phonenumber;
+		this.isAdmin = isAdmin;
+		this.mLocation = mLocation;
+	}
 
-    /**
+
+
+	/**
      * @return the firstName
      */
     public String getFirstName()
