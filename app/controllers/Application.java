@@ -49,14 +49,14 @@ public class Application extends Controller
         }
     }
     
-    public static void saveReport(Long categoryId, String title, Long locationId, String content, String direction) throws Exception
+    public static void saveReport(Long categoryId, String title, Long locationId, String content, String duration,  String direction) throws Exception
     {
     	IncidentCategory cat = (IncidentCategory) IncidentCategory.findById(categoryId);
     	Incident i = new Incident(cat,
     			title,
     			content,
     			Calendar.getInstance().getTime(),
-    			cat.getDuration(),
+    			getEstDuration(cat, duration),
     			(Location) Location.findById(locationId),
     			direction,
     			(User) User.find("byFirstName", "john").first()); //HARDCODED!!
@@ -69,5 +69,13 @@ public class Application extends Controller
         // Save
         i.save();
         index();
+    }
+    
+    private static long getEstDuration(IncidentCategory cat, String estDuration)
+    {
+    	if(estDuration == null || estDuration.isEmpty()){
+    		return cat.getDefaultDurationMins();
+    	}
+    	return Long.parseLong(estDuration);
     }
 }

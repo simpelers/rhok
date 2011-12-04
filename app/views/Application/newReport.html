@@ -37,6 +37,14 @@
         <span class="error">#{error 'post.description' /}</span>
         #{/field}
     </p>
+    <p>
+        #{field 'duration'}
+        <label>Est. Duration (mins)</label>
+        <input type="text" name="${field.name}" 
+            value="${incident?.duration}" />
+        <span class="error">#{error 'incident.direction' /}</span>
+        #{/field}
+    </p>
     
     <p>
         #{field 'direction'}
