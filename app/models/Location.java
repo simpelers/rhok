@@ -12,14 +12,14 @@ import play.db.jpa.Model;
 public class Location extends Model
 {
 	private String name;
-	private double mLat;
-    private double mLong;
+	private double latitude;
+    private double longitude;
     
-	public Location(String aName, double aLat, double aLong)
+	public Location(String aName, double aLatitude, double aLongitude)
     {
         setName(aName);
-        mLat = aLat;
-        mLong = aLong;
+        latitude = aLatitude;
+        longitude = aLongitude;
     }
 
 
@@ -34,33 +34,33 @@ public class Location extends Model
     /**
      * @return the lat
      */
-    public double getLat()
+    public double getLatitude()
     {
-        return mLat;
+        return latitude;
     }
 
     /**
      * @param aLat the lat to set
      */
-    public void setLat(double aLat)
+    public void setLatitude(double latitude)
     {
-        mLat = aLat;
+        latitude = latitude;
     }
 
     /**
      * @return the long
      */
-    public double getLong()
+    public double getLongitude()
     {
-        return mLong;
+        return longitude;
     }
 
     /**
      * @param aL the long to set
      */
-    public void setLong(double aL)
+    public void setLongitude(double longitude)
     {
-        mLong = aL;
+        longitude = longitude;
     }
 
 }

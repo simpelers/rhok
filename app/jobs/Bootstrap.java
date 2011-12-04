@@ -1,10 +1,13 @@
 package jobs;
 
+import java.util.Calendar;
+
 import models.Incident;
 import models.IncidentCategory;
 import models.Location;
 import models.User;
 import play.jobs.*;
+import services.Ushahidi;
  
 @OnApplicationStart
 public class Bootstrap extends Job {
@@ -26,10 +29,11 @@ public class Bootstrap extends Job {
         User user2 = new User("anna", "doe", "password", "5142444433", true, l2);
         user2.save();
         
+        Calendar calendar = Calendar.getInstance();
         
-        Incident i = new Incident(cat1, "Shoots", "Several shoots were heard.", (System.currentTimeMillis() - 1000000L), 75, l, "North", user1);
+        Incident i = new Incident(cat1, "Shoots", "Several shoots were heard.", calendar.getTime(), 75, l, "North", user1);
         i.save();
-        Incident i2 = new Incident(cat2, "Tanks burning", "A class has left one tank on fire.", (System.currentTimeMillis() - 300000L), 200, l2, "South", user1);
+        Incident i2 = new Incident(cat2, "Tanks burning", "A class has left one tank on fire.", calendar.getTime(), 200, l2, "South", user1);
         i2.save();
     }
     

@@ -36,11 +36,27 @@ public class Ushahidi
     {
 
         this.url = url;
-        this.username = username;
-        this.password = password;
+        this.setUsername(username);
+        this.setPassword(password);
     }
 
-    public void storeIncident(Incident report)
+    public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void storeIncident(Incident report)
     {
         try
         {
@@ -57,8 +73,8 @@ public class Ushahidi
             addParameter(contentBuilder, "incident_hour", DateFormatUtils.format(report.incidentDate, "hh"));
             addParameter(contentBuilder, "incident_minute", DateFormatUtils.format(report.incidentDate, "mm"));
             addParameter(contentBuilder, "incident_ampm", DateFormatUtils.format(report.incidentDate, "a").toLowerCase());
-            addParameter(contentBuilder, "latitude", String.valueOf(report.location.getLat()));
-            addParameter(contentBuilder, "longitude", String.valueOf(report.location.getLong()));
+            addParameter(contentBuilder, "latitude", String.valueOf(report.location.getLatitude()));
+            addParameter(contentBuilder, "longitude", String.valueOf(report.location.getLongitude()));
             addParameter(contentBuilder, "location_name", report.location.getName());
             addParameter(contentBuilder, "person_first", report.User.getFirstName());
             addParameter(contentBuilder, "person_last", report.User.getLastName());

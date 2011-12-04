@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.experimental.categories.Categories.IncludeCategory;
@@ -24,6 +25,7 @@ import services.Ushahidi;
 public class Application extends Controller 
 {
     public static final Ushahidi USHAHIDI = new Ushahidi("https://simpelers.crowdmap.com/api", "andrew@tillnow.com", "qazwsx");
+    private static Calendar CALENDAR = Calendar.getInstance();
 
     public static void index() 
     {
@@ -52,7 +54,7 @@ public class Application extends Controller
     	Incident i = new Incident((IncidentCategory) IncidentCategory.find("byName", "Gunshot").first(),
     			title,
     			content,
-    			System.currentTimeMillis(),
+    			CALENDAR.getTime(),
     			0,
     			(Location) Location.find("byName", "Champ de Mars").first(),
     			direction,

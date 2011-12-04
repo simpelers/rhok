@@ -26,8 +26,8 @@ public class CheckInTest extends UnitTest
         //Verify
         User user = User.find("phonenumber", "0000").first();
         Location location = user.getLocation();
-        assertTrue(location.getLat() == 33);
-        assertTrue(location.getLong() == 33);
+        assertTrue(location.getLatitude() == 33);
+        assertTrue(location.getLongitude() == 33);
         
     }
 
