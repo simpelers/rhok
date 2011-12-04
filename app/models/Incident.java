@@ -14,7 +14,6 @@ public class Incident extends Model {
     public String incidentTitle;
     public String description;
     public long incidentDate;
-    public String incidentType; ///ENUM
     public long duration;
     @OneToOne
     public Location location;
@@ -25,7 +24,7 @@ public class Incident extends Model {
     
     
     public Incident(IncidentCategory aIncidentCategory, String incidentTitle, String description,
-            long incidentDate, String incidentType, long duration,
+            long incidentDate, long duration,
             Location location, String direction,
             User user) 
     {
@@ -34,7 +33,6 @@ public class Incident extends Model {
         this.incidentTitle = incidentTitle;
         this.description = description;
         this.incidentDate = incidentDate;
-        this.incidentType = incidentType;
         this.duration = duration;
         this.location = location;
         this.direction = direction;
@@ -46,4 +44,13 @@ public class Incident extends Model {
         Date date = new Date(incidentDate);
         return date.toString();
     }
+    
+    /*
+    @PostPersist
+    public void test()
+    {
+        
+        
+        
+    }*/
 }

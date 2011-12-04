@@ -6,8 +6,16 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import play.mvc.After;
 import play.mvc.Controller;
 
-public class Incidents extends CRUD {
-    
+public class Incidents extends CRUD 
+{
+    /*
+    @After
+    public static void test()
+    {
+        System.out.println("hi");
+        
+    }*/
 }
