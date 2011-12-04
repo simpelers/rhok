@@ -26,10 +26,16 @@ public class Incident extends Model {
     @OneToOne
     public User User;
     
+    public Incident()
+    {}
     
-    public Incident(IncidentCategory aIncidentCategory, String incidentTitle, String description,
-            long incidentDate, long duration,
-            Location location, String direction,
+    public Incident(IncidentCategory aIncidentCategory,
+    		String incidentTitle,
+    		String description,
+            long incidentDate,
+            long duration,
+            Location location,
+            String direction,
             User user) 
     {
         super();

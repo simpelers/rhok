@@ -1,0 +1,42 @@
+#{extends 'main.html' /}
+
+<h2>Submit a report</h2>
+
+<div class="objectForm">
+#{form @saveReport()}
+   #{ifErrors}
+        <p class="error">
+            Please correct these errors.
+        </p>
+    #{/ifErrors}
+   <p>
+        #{field 'title'}
+        <label>Incident Title</label>
+        <input type="text" name="${field.name}" 
+            value="${incident?.incidentTitle}" />
+        <span class="error">#{error 'incident.incidentTitle' /}</span>
+        #{/field}
+    </p>
+ 
+    <p>
+        #{field 'content'}
+        <label>Description:</label>
+        <textarea name="${field.name}">${post?.description}</textarea>
+        <span class="error">#{error 'post.description' /}</span>
+        #{/field}
+    </p>
+    
+    <p>
+        #{field 'title'}
+        <label>Direction</label>
+        <input type="text" name="${field.name}" 
+            value="${incident?.direction}" />
+        <span class="error">#{error 'incident.direction' /}</span>
+        #{/field}
+    </p>
+    
+    <p>
+        <input type="submit" value="Submit Report" />
+    </p>
+#{/form}
+</div>

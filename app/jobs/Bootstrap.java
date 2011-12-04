@@ -10,9 +10,9 @@ import play.jobs.*;
 public class Bootstrap extends Job {
     
     public void doJob() {
-    	Location l = new Location("Champ de Mars", 45, 49);
+    	Location l = new Location("Champ de Mars", 18.54238, -72.33619);
     	l.save();
-    	Location l2 = new Location("Cite Soleil", 46, 47);
+    	Location l2 = new Location("Cite Soleil", 18.58310, -72.33500);
     	l2.save();
     	
     	IncidentCategory cat1 = new IncidentCategory("Gunshot", 60l*60l*1000l);
