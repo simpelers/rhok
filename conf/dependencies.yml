@@ -2,3 +2,14 @@
 
 require:
     - play -> crud
+    - com.sun.jersey -> jersey-client 1.8
+    - com.sun.jersey -> jersey-core 1.8
+    - org.codehaus.jackson -> jackson-mapper-asl 1.8.0
+    - provided -> tropo-webapi-java 0.3
+
+repositories: 
+    - provided: 
+        type:       local 
+        artifact:   "${application.path}/tropo/[module]-[revision].jar" 
+        contains: 
+            - provided -> * 

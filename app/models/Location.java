@@ -11,28 +11,16 @@ import play.db.jpa.Model;
 @Entity
 public class Location extends Model
 {
-
-	private Incident incident;
 	private String name;
-	private String mLat;
-    private String mLong;
+	private double latitude;
+    private double longitude;
     
-	public Location(String aName, String aLat, String aLong, Incident aIncident)
+	public Location(String aName, double aLatitude, double aLongitude)
     {
         setName(aName);
-        mLat = aLat;
-        mLong = aLong;
-        incident = aIncident;
+        latitude = aLatitude;
+        longitude = aLongitude;
     }
-
-    @OneToOne(mappedBy = "location")
-    public Incident getIncident() {
-		return incident;
-	}
-
-	public void setIncident(Incident incident) {
-		this.incident = incident;
-	}
 
 
     public String getName() {
@@ -46,33 +34,33 @@ public class Location extends Model
     /**
      * @return the lat
      */
-    public String getLat()
+    public double getLatitude()
     {
-        return mLat;
+        return latitude;
     }
 
     /**
      * @param aLat the lat to set
      */
-    public void setLat(String aLat)
+    public void setLatitude(double latitude)
     {
-        mLat = aLat;
+        latitude = latitude;
     }
 
     /**
      * @return the long
      */
-    public String getLong()
+    public double getLongitude()
     {
-        return mLong;
+        return longitude;
     }
 
     /**
      * @param aL the long to set
      */
-    public void setLong(String aL)
+    public void setLongitude(double longitude)
     {
-        mLong = aL;
+        longitude = longitude;
     }
 
 }
