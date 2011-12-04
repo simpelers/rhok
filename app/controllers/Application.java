@@ -20,21 +20,36 @@ import models.User;
 import play.db.Model;
 import play.exceptions.TemplateNotFoundException;
 import play.mvc.Controller;
+import play.mvc.With;
 import services.Ushahidi;
 
 public class Application extends Controller 
 {
     public static final Ushahidi USHAHIDI = new Ushahidi("https://simpelers.crowdmap.com/api", "andrew@tillnow.com", "qazwsx");
+    public static boolean isLoggedIn = false;
+    public static User loggedInUser = null;
 
     public static void index() 
     {
-    	try {
-    		List<Incident> all = Incident.find("order by incidentDate desc").fetch();
-    		
-			render(all);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        
+
+        try {
+            List<Incident> all = Incident.find("order by incidentDate desc").fetch();
+            
+            if (loggedInUser != null)
+            {
+                String user = loggedInUser.getFirstName();
+                
+                render(user, loggedInUser, all);                
+            }
+            else
+            {
+                render(loggedInUser, all);  
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     public static void newReport() throws Exception
@@ -42,24 +57,58 @@ public class Application extends Controller
         Incident incident = new Incident();
         List<IncidentCategory> categories = IncidentCategory.findAll();
         List<Location> locations = Location.findAll();
-        try {
-            render(incident, categories, locations);
+        try 
+        {
+            if (loggedInUser != null)
+            {
+                String user = loggedInUser.getFirstName();
+                
+                render(user, incident, categories, locations);                
+            }
+            else
+            {
+                render(incident, categories, locations);  
+            }
+            
         } catch (TemplateNotFoundException e) {
-        	e.printStackTrace();
+            e.printStackTrace();
         }
     }
     
-    public static void saveReport(Long categoryId, String title, Long locationId, String content, String duration,  String direction) throws Exception
+    public static void login() throws Exception
     {
-    	IncidentCategory cat = (IncidentCategory) IncidentCategory.findById(categoryId);
-    	Incident i = new Incident(cat,
-    			title,
-    			content,
-    			Calendar.getInstance().getTime(),
-    			getEstDuration(cat, duration),
-    			(Location) Location.findById(locationId),
-    			direction,
-    			(User) User.find("byFirstName", "john").first()); //HARDCODED!!
+        //User user = new User();
+        
+        render(loggedInUser);
+    }
+    
+    public static void loginUser(String firstname, String aPassword) throws Exception
+    {
+        User user = Authentication.getUser(firstname, aPassword);
+        
+        if (user == null)
+        {
+            isLoggedIn = false;
+            login();
+            return;
+        }
+        
+        loggedInUser = user;
+        
+        index();
+    }
+    public static void saveReport(Long categoryId, String title, Long locationId, String content, String duration,  String direction) throws Exception
+
+    {
+        IncidentCategory cat = (IncidentCategory) IncidentCategory.findById(categoryId);
+        Incident i = new Incident(cat,
+                title,
+                content,
+                Calendar.getInstance().getTime(),
+                getEstDuration(cat, duration),
+                (Location) Location.findById(locationId),
+                direction,
+                (User) User.find("byFirstName", "john").first()); //HARDCODED!!
         
         // Validate
         validation.valid(i);
@@ -73,9 +122,9 @@ public class Application extends Controller
     
     private static long getEstDuration(IncidentCategory cat, String estDuration)
     {
-    	if(estDuration == null || estDuration.isEmpty()){
-    		return cat.getDefaultDurationMins();
-    	}
-    	return Long.parseLong(estDuration);
+        if(estDuration == null || estDuration.isEmpty()){
+            return cat.getDefaultDurationMins();
+        }
+        return Long.parseLong(estDuration);
     }
 }

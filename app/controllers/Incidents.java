@@ -14,11 +14,6 @@ import play.mvc.Controller;
 
 public class Incidents extends CRUD 
 {
-    /*
-    @After
-    public static void test()
-    {
-        System.out.println("hi");
-        
-    }*/
+
+
 }

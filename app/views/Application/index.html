@@ -1,5 +1,6 @@
 #{extends 'main.html' /} #{set title:'Home' /}
 
+#{if user}
 <!-- Example row of columns -->
         <div class="row">
           <div class="span16">
@@ -34,3 +35,7 @@
           </div>
         </div>
 
+#{/if}
+#{else}
+      <a href="/">Please log in.</a>     
+#{/else}

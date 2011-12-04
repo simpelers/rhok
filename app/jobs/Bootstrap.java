@@ -23,6 +23,8 @@ public class Bootstrap extends Job {
     	IncidentCategory cat2 = new IncidentCategory("Fire", 10l*60l*60l*1000l);
     	cat2.save();
     	
+        User user0 = new User("a", "z", "a", "5144244244", true, l);
+        user0.save();
     
         User user1 = new User("john", "doe", "password", "5144244244", true, l);
         user1.save();

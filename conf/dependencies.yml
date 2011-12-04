@@ -2,6 +2,7 @@
 
 require:
     - play -> crud
+   # - play -> secure
     - com.sun.jersey -> jersey-client 1.8
     - com.sun.jersey -> jersey-core 1.8
     - org.codehaus.jackson -> jackson-mapper-asl 1.8.0

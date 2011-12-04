@@ -18,6 +18,11 @@ public class User extends Model {
     @ManyToOne
     private Location mLocation;
     
+    public User()
+    {
+        
+    }
+    
     public User(String firstName, String lastName, String password,
 			String phonenumber, boolean isAdmin, Location mLocation) {
 		super();

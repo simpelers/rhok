@@ -27,11 +27,23 @@
         <div class="container-fluid">
           <a class="brand" href="#">Haiti Security</a>
           <ul class="nav">
-            <li><a href="/">Home</a></li>
+            <li><a href="/index">Home</a></li>
             <li><a href="/incident/new">Submit a report</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
-          <p class="pull-right">Logged in as <a href="#">username</a></p>
+              #{if user}
+                  <p class="pull-right">Logged in as <a href="#">${user}</a></p>
+             #{/if}
+             #{else}
+                  <p class="pull-right">Please log in</a></p>
+                    
+             #{/else}
+                          
+          
+            #{if loggedInUser}            
+            <p class="pull-right">Logged in as <a href="#">${loggedInUser.firstName}</a></p>
+            #{/if}
+          <!-- <p class="pull-right">Logged in as <a href="#">username</a></p> -->
         </div>
       </div>
     </div>
