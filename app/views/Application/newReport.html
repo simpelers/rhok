@@ -12,12 +12,8 @@
     <p>
     	#{field 'categoryId'}
     	<label>Incident Category</label>
-    	<select >
-		        #{list categories, as:'category'}
-		                 <option value="${category.id}">${category.name}</option>
-		        #{/list}
-		</select>
-		#{/field}
+    	#{select 'categoryId', items:categories, labelProperty:'name', value:1/}
+    	#{/field}
 	</p>
     <p>
         #{field 'title'}
@@ -30,12 +26,8 @@
     <p>
     	#{field 'locationId'}
     	<label>Location</label>
-    	<select >
-		        #{list locations, as:'location'}
-		                 <option value="${location.id}">${location.name}</option>
-		        #{/list}
-		</select>
-		#{/field}
+    	#{select 'locationId', items:locations, labelProperty:'name', value:1/}
+    	#{/field}
 	</p>
  
     <p>
@@ -43,6 +35,14 @@
         <label>Description:</label>
         <textarea name="${field.name}">${post?.description}</textarea>
         <span class="error">#{error 'post.description' /}</span>
+        #{/field}
+    </p>
+    <p>
+        #{field 'duration'}
+        <label>Est. Duration (mins)</label>
+        <input type="text" name="${field.name}" 
+            value="${incident?.duration}" />
+        <span class="error">#{error 'incident.direction' /}</span>
         #{/field}
     </p>
     

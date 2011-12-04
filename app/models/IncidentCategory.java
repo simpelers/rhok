@@ -34,5 +34,10 @@ public class IncidentCategory extends Model  {
     public void setDuration(long duration) {
         this.duration = duration;
     }
+    
+    public long getDefaultDurationMins()
+    {
+    	return getDuration() / (1000 * 60);
+    }
 
 }

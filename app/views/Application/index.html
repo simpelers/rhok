@@ -8,7 +8,8 @@
 					<tr>
                         <th>Time</th>
                         <th class="header headerSortUp">Incident type</th>
-                        <th>Duration (Mins)</th>
+                        <th>Title</th>
+                        <th>Est. Duration (Mins)</th>
                         <th class="header headerSortUp">Location</th>
                         <th>Direction</th>
                         <th>Description</th>
@@ -20,6 +21,7 @@
 				<tr>
 				    <td>${incident.getIncidentDateFormated()}</td>
 				    <td>${incident.incidentCategory.getName()}</td>
+				    <td>${incident.incidentTitle}</td>
 				    <td>${incident.duration}</td>
 				    <td>${incident.location.getName()}</td>
 				    <td>${incident.direction}</td>
