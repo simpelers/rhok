@@ -1,6 +1,7 @@
 package jobs;
 
 import models.Incident;
+import models.IncidentCategory;
 import models.Location;
 import models.User;
 import play.jobs.*;
@@ -9,17 +10,26 @@ import play.jobs.*;
 public class Bootstrap extends Job {
     
     public void doJob() {
-    	Location l = new Location("Champ de Mars", "123", "1243");
+    	Location l = new Location("Champ de Mars", 123, 1243);
     	l.save();
-    	Location l2 = new Location("Cite Soleil","425", "12438");
+    	Location l2 = new Location("Cite Soleil", 425, 12438);
     	l2.save();
+    	
+    	IncidentCategory cat1 = new IncidentCategory("Gunshot", 60l*60l*1000l);
+    	cat1.save();
+    	IncidentCategory cat2 = new IncidentCategory("Fire", 10l*60l*60l*1000l);
+    	cat2.save();
+    	
+    
         User user1 = new User("john", "doe", "password", "5144244244", true, l);
         user1.save();
         User user2 = new User("anna", "doe", "password", "5142444433", true, l2);
         user2.save();
-        Incident i = new Incident("Gunshot", "description", lastRun, null, lastRun, l, null, user1);
+        
+        
+        Incident i = new Incident(cat1, "Shoots", "Several shoots were heard.", (System.currentTimeMillis() - 1000000L), null, lastRun, l, null, user1);
         i.save();
-        Incident i2 = new Incident("Gunshot2", "description2", lastRun, null, lastRun, l, null, user1);
+        Incident i2 = new Incident(cat2, "Tanks burning", "A class has left one tank on fire.", (System.currentTimeMillis() - 300000L), null, lastRun, l2, null, user1);
         i2.save();
     }
     

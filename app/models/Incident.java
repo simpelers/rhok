@@ -8,6 +8,9 @@ import play.db.jpa.*;
 @Entity
 public class Incident extends Model {
     
+    @OneToOne
+    public IncidentCategory incidentCategory;
+    
     public String incidentTitle;
     public String description;
     public long incidentDate;
@@ -21,12 +24,13 @@ public class Incident extends Model {
     public User User;
     
     
-    public Incident(String incidentTitle, String description,
+    public Incident(IncidentCategory aIncidentCategory, String incidentTitle, String description,
             long incidentDate, String incidentType, long duration,
             Location location, String direction,
             User user) 
     {
         super();
+        this.incidentCategory = aIncidentCategory;
         this.incidentTitle = incidentTitle;
         this.description = description;
         this.incidentDate = incidentDate;
@@ -35,5 +39,11 @@ public class Incident extends Model {
         this.location = location;
         this.direction = direction;
         User = user;
+    }
+    
+    public String getIncidentDate()
+    {
+        Date date = new Date(incidentDate);
+        return date.toString();
     }
 }

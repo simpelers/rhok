@@ -1,0 +1,1 @@
+$('#my-modal').modal(options);

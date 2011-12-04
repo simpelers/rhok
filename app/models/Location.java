@@ -12,10 +12,10 @@ import play.db.jpa.Model;
 public class Location extends Model
 {
 	private String name;
-	private String mLat;
-    private String mLong;
+	private double mLat;
+    private double mLong;
     
-	public Location(String aName, String aLat, String aLong)
+	public Location(String aName, double aLat, double aLong)
     {
         setName(aName);
         mLat = aLat;
@@ -34,7 +34,7 @@ public class Location extends Model
     /**
      * @return the lat
      */
-    public String getLat()
+    public double getLat()
     {
         return mLat;
     }
@@ -42,7 +42,7 @@ public class Location extends Model
     /**
      * @param aLat the lat to set
      */
-    public void setLat(String aLat)
+    public void setLat(double aLat)
     {
         mLat = aLat;
     }
@@ -50,7 +50,7 @@ public class Location extends Model
     /**
      * @return the long
      */
-    public String getLong()
+    public double getLong()
     {
         return mLong;
     }
@@ -58,7 +58,7 @@ public class Location extends Model
     /**
      * @param aL the long to set
      */
-    public void setLong(String aL)
+    public void setLong(double aL)
     {
         mLong = aL;
     }

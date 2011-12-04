@@ -6,24 +6,21 @@
              <table class="table">
 				<thead>
 					<tr>
-					<th>Incident type</th>
-					<th>Location</th>
-					<th>Time</th>
-					<th>Duration (Mins)</th>
-					<th>Direction</th>
-					<th>Comments</th>
+                        <th>Time</th>
+                        <th class="header headerSortUp">Incident type</th>
+                        <th>Duration (Mins)</th>
+                        <th class="header headerSortUp">Location</th>
+                        <th>Direction</th>
+                        <th>Comments</th>
+                        <th></th>
 					</tr>
 				</thead>
 				<tbody>
 				#{list items:all, as:'incident'}
 				<tr>
-					<td><a href="#">${incident.incidentTitle}</a></td>
-					<td>${incident.location.name}</td>
-					<td>incident.timestamp</td>
-					<td>15</td>
-					<td>District 2</td>
-					<td><a href="#">3 comments</a> <span id="commentTime">2hrs ago</span></td>
-					<td><a class="btn" data-controls-modal="modal-from-dom" data-backdrop="true" >Send notification</a></td>
+				    <td>${incident.getIncidentDate()}</td>
+				    <td>${incident.incidentCategory.getName()}</td>
+				
 				</tr>
 				#{/list}
 				</tbody>
