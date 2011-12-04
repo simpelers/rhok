@@ -20,7 +20,7 @@ public class Bootstrap extends Job {
     	
     	IncidentCategory cat1 = new IncidentCategory("Gunshot", 60l*60l*1000l);
     	cat1.save();
-    	IncidentCategory cat2 = new IncidentCategory("Fire", 10l*60l*60l*1000l);
+    	IncidentCategory cat2 = new IncidentCategory("Violence", 10l*60l*60l*1000l);
     	cat2.save();
     	
     

@@ -1,23 +1,11 @@
 package controllers;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Constructor;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.List;
-
-import org.junit.experimental.categories.Categories.IncludeCategory;
-
-import controllers.CRUD.ObjectType;
-
 import models.Incident;
 import models.IncidentCategory;
 import models.Location;
 import models.User;
-import play.db.Model;
 import play.exceptions.TemplateNotFoundException;
 import play.mvc.Controller;
 import services.Ushahidi;
@@ -30,8 +18,21 @@ public class Application extends Controller
     {
     	try {
     		List<Incident> all = Incident.find("order by incidentDate desc").fetch();
-    		
+
+
 			render(all);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+
+    public static void mapview()
+    {
+    	try {
+    		List<Incident> all = Incident.find("order by incidentDate desc").fetch();
+            String mapsApiKey = "AIzaSyCnQ1Mxs0qi9g26mYEF_OgxNvnY-eGm5Uw";//USHAHIDI.getGoogleMapsApiKey();
+
+			render(all, mapsApiKey);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
