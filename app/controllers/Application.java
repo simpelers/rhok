@@ -49,15 +49,15 @@ public class Application extends Controller
         }
     }
     
-    public static void saveReport(Object categoryId, String title, Location locationId, String content, String direction) throws Exception
+    public static void saveReport(Long categoryId, String title, Long locationId, String content, String direction) throws Exception
     {
-    	//TODO fix location and category
-    	Incident i = new Incident((IncidentCategory) IncidentCategory.find("byName", "Fire").first(),
+    	IncidentCategory cat = (IncidentCategory) IncidentCategory.findById(categoryId);
+    	Incident i = new Incident(cat,
     			title,
     			content,
     			Calendar.getInstance().getTime(),
-    			0,
-    			(Location) Location.find("byName", "Cite Soleil").first(),
+    			cat.getDuration(),
+    			(Location) Location.findById(locationId),
     			direction,
     			(User) User.find("byFirstName", "john").first()); //HARDCODED!!
         
