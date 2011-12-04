@@ -25,7 +25,6 @@ import services.Ushahidi;
 public class Application extends Controller 
 {
     public static final Ushahidi USHAHIDI = new Ushahidi("https://simpelers.crowdmap.com/api", "andrew@tillnow.com", "qazwsx");
-    private static Calendar CALENDAR = Calendar.getInstance();
 
     public static void index() 
     {
@@ -56,7 +55,7 @@ public class Application extends Controller
     	Incident i = new Incident((IncidentCategory) IncidentCategory.find("byName", "Fire").first(),
     			title,
     			content,
-    			CALENDAR.getTime(),
+    			Calendar.getInstance().getTime(),
     			0,
     			(Location) Location.find("byName", "Cite Soleil").first(),
     			direction,
