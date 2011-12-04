@@ -17,7 +17,7 @@ public class Incident extends Model {
     
     public String incidentTitle;
     public String description;
-    public long incidentDate;
+    public Date incidentDate;
     public long duration;
     @OneToOne
     public Location location;
@@ -28,7 +28,7 @@ public class Incident extends Model {
     
     
     public Incident(IncidentCategory aIncidentCategory, String incidentTitle, String description,
-            long incidentDate, long duration,
+            Date incidentDate, long duration,
             Location location, String direction,
             User user) 
     {
@@ -43,12 +43,13 @@ public class Incident extends Model {
         User = user;
     }
     
-    public String getIncidentDateForUshahidi()
+    public Date getIncidentDate()
     {
-        return DateFormatUtils.format(incidentDate, "M/dd/yyyy");
-    }
+        return this.incidentDate;
+	}
+<<<<<<< .mine    }
     
-    public String getIncidentDateFormated()
+=======>>>>>>> .theirs    public String getIncidentDateFormated()
     {
         Date date = new Date(incidentDate);
         return date.toString();
