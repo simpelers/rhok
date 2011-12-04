@@ -1,13 +1,13 @@
 package services;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 import models.Incident;
 import models.IncidentCategory;
 import models.Location;
 import models.User;
 import org.junit.Test;
+
+import static org.junit.Assert.assertThat;
 
 /**
  * Test class for the Ushahidi service
@@ -35,6 +35,16 @@ public class UshahidiTest
             new Incident(new IncidentCategory("Fire", 60), "testtitle", "description", calendar.getTime(),
                 45L, new Location("FarAway", 45.00, 49.00), "North",
                 new User("test", "api", "pass", "514", true, null)));
+    }
+
+    @Test
+    public void testGetApiKey() throws Exception
+    {
+
+        Calendar calendar = Calendar.getInstance();
+
+    	Ushahidi ushahidi = new Ushahidi("https://simpelers.crowdmap.com/api", "andrew@tillnow.com", "qazwsx");
+        System.out.println(ushahidi.getGoogleMapsApiKey());
     }
 
 }

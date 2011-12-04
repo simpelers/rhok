@@ -3,11 +3,16 @@ package services;
 import com.sun.jersey.api.client.AsyncWebResource;
 import com.sun.jersey.api.client.AsyncWebResource.Builder;
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
+import com.sun.xml.internal.ws.message.source.PayloadSourceMessage;
 import java.net.URLEncoder;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import models.Incident;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -97,6 +102,36 @@ public class Ushahidi
         }
     }
 
+    public String getGoogleMapsApiKey()
+    {
+        try
+        {
+            Client client = Client.create();
+            //client.addFilter(new HTTPBasicAuthFilter(username, password));
+
+            StringBuilder urlBuilder = new StringBuilder();
+            urlBuilder.append(url);
+            urlBuilder.append("?task=apikeys");
+            addParameter(urlBuilder, "by", "google");
+            addParameter(urlBuilder, "resp", "json");
+
+            WebResource resource = client.resource(urlBuilder.toString());
+            LOGGER.debug("Getting api key with url: " + urlBuilder.toString());
+
+            String response = resource.get(String.class);
+
+            ObjectMapper mapper = new ObjectMapper();
+            LOGGER.info("Received response: " + response);
+            Response jsonResponse = mapper.readValue(response, Response.class);
+            return jsonResponse.payload.services.get(0).service.apikey;
+        }
+        catch (Exception e)
+        {
+            String errorMessage = generateErrorMessage();
+            throw new RuntimeException(errorMessage, e);
+        }
+    }
+
     private String formEncode(String aData)
     {
         // Replace any white spaces with the '+' character
@@ -117,5 +152,37 @@ public class Ushahidi
     private String generateErrorMessage()
     {
         return String.format("Error sending request to %1$s", url);
+    }
+
+    private static class Response
+    {
+        public Payload payload;
+        public Error error;
+
+    }
+
+    private static class Payload
+    {
+        public String domain;
+        public List<Service> services;
+
+    }
+
+    private static class Service
+    {
+        public ServiceData service;
+
+    }
+
+    private static class ServiceData
+    {
+        public String id;
+        public String apikey;
+    }
+
+    private static class Error
+    {
+        public String code;
+        public String message;
     }
 }
