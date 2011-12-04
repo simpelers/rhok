@@ -11,28 +11,16 @@ import play.db.jpa.Model;
 @Entity
 public class Location extends Model
 {
-
-	private Incident incident;
 	private String name;
 	private String mLat;
     private String mLong;
     
-	public Location(String aName, String aLat, String aLong, Incident aIncident)
+	public Location(String aName, String aLat, String aLong)
     {
         setName(aName);
         mLat = aLat;
         mLong = aLong;
-        incident = aIncident;
     }
-
-    @OneToOne(mappedBy = "location")
-    public Incident getIncident() {
-		return incident;
-	}
-
-	public void setIncident(Incident incident) {
-		this.incident = incident;
-	}
 
 
     public String getName() {

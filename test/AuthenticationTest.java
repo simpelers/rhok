@@ -15,7 +15,7 @@ public class AuthenticationTest extends UnitTest
     public void getUserFullTest()
     {
         //Set up
-        Location startLocation = new Location("11", "22");
+        Location startLocation = new Location("Location1", "11", "22");
         startLocation.save();
         (new User("firstName", "lastName", "password", "0000", false, startLocation)).save();
         (new User("firstName2", "lastName2", "password", "0000", false, startLocation)).save();
@@ -35,7 +35,7 @@ public class AuthenticationTest extends UnitTest
     public void getUserPhoneNumberTest()
     {
         //Set up
-        Location startLocation = new Location("11", "22");
+        Location startLocation = new Location("Location2", "11", "22");
         startLocation.save();
         (new User("firstName", "lastName", "password", "0000", false, startLocation)).save();
         (new User("firstName2", "lastName2", "password", "1000", false, startLocation)).save();
