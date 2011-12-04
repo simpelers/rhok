@@ -26,8 +26,9 @@ public class UshahidiTest
     {
         Ushahidi ushahidi = new Ushahidi("https://simpelers.crowdmap.com/api", "andrew@tillnow.com", "qazwsx");
         ushahidi.storeIncident(
-            new Incident(new IncidentCategory("Fire", 60), "testtitle", "description", System.currentTimeMillis(),
-                "ignored", 45, new Location("FarAway", 45.00, 49.00), "North",
+            new Incident(new IncidentCategory("Fire", 60), "testtitle", "description",
+                System.currentTimeMillis(),
+                45, new Location("FarAway", 45.00, 49.00), "North",
                 new User("test", "api", "pass", "514", true, null)));
     }
 
