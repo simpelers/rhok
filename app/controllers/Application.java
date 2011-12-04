@@ -30,7 +30,7 @@ public class Application extends Controller
     public static void index() 
     {
     	try {
-    		List<Incident> all = Incident.findAll();
+    		List<Incident> all = Incident.find("order by incidentDate desc").fetch();
     		
 			render(all);
 		} catch (Exception e) {
