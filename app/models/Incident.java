@@ -47,12 +47,16 @@ public class Incident extends Model {
     {
         return this.incidentDate;
 	}
-<<<<<<< .mine    }
     
-=======>>>>>>> .theirs    public String getIncidentDateFormated()
+    public String getIncidentDateForUshahidi()
     {
-        Date date = new Date(incidentDate);
-        return date.toString();
+    	return DateFormatUtils.format(incidentDate, "M/dd/yyyy");
+    }
+	
+
+    public String getIncidentDateFormated()
+    {
+        return incidentDate.toString();
     }
     
     
