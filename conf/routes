@@ -3,9 +3,10 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
-GET     /incident/new                          	Application.newReport
-GET     /map                                    Application.mapview
+GET     /                                      Application.login
+GET     /index                                 Application.index
+GET     /incident/new                          Application.newReport
+GET     /map                                   Application.mapview
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
