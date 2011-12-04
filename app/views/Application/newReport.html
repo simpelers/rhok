@@ -9,7 +9,17 @@
             Please correct these errors.
         </p>
     #{/ifErrors}
-   <p>
+    <p>
+    	#{field 'categoryId'}
+    	<label>Incident Category</label>
+    	<select >
+		        #{list categories, as:'category'}
+		                 <option value="${category.id}">${category.name}</option>
+		        #{/list}
+		</select>
+		#{/field}
+	</p>
+    <p>
         #{field 'title'}
         <label>Incident Title</label>
         <input type="text" name="${field.name}" 
@@ -17,6 +27,16 @@
         <span class="error">#{error 'incident.incidentTitle' /}</span>
         #{/field}
     </p>
+    <p>
+    	#{field 'locationId'}
+    	<label>Location</label>
+    	<select >
+		        #{list locations, as:'location'}
+		                 <option value="${location.id}">${location.name}</option>
+		        #{/list}
+		</select>
+		#{/field}
+	</p>
  
     <p>
         #{field 'content'}
@@ -27,7 +47,7 @@
     </p>
     
     <p>
-        #{field 'title'}
+        #{field 'direction'}
         <label>Direction</label>
         <input type="text" name="${field.name}" 
             value="${incident?.direction}" />

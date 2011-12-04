@@ -41,24 +41,26 @@ public class Application extends Controller
     public static void newReport() throws Exception
     {
         Incident incident = new Incident();
+        List<IncidentCategory> categories = IncidentCategory.findAll();
+        List<Location> locations = Location.findAll();
         try {
-            render(Incident.class, incident);
+            render(incident, categories, locations);
         } catch (TemplateNotFoundException e) {
         	e.printStackTrace();
         }
     }
     
-    public static void saveReport(String title, String content, String direction) throws Exception
+    public static void saveReport(Object categoryId, String title, Location locationId, String content, String direction) throws Exception
     {
-    	//TODO fix me!
-    	Incident i = new Incident((IncidentCategory) IncidentCategory.find("byName", "Gunshot").first(),
+    	//TODO fix location and category
+    	Incident i = new Incident((IncidentCategory) IncidentCategory.find("byName", "Fire").first(),
     			title,
     			content,
     			CALENDAR.getTime(),
     			0,
-    			(Location) Location.find("byName", "Champ de Mars").first(),
+    			(Location) Location.find("byName", "Cite Soleil").first(),
     			direction,
-    			(User) User.find("byFirstName", "john").first());
+    			(User) User.find("byFirstName", "john").first()); //HARDCODED!!
         
         // Validate
         validation.valid(i);
