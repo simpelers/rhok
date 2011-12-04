@@ -1,5 +1,7 @@
 #{extends 'main.html' /}
 
+#{if user}
+
 <h2>Submit a report</h2>
 
 <div class="objectForm">
@@ -60,3 +62,8 @@
     </p>
 #{/form}
 </div>
+
+#{/if}
+#{else}
+      <a href="/">Please log in.</a>     
+#{/else}
