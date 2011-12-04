@@ -53,8 +53,7 @@ public class Ushahidi
             addParameter(contentBuilder, "incident_title", report.incidentTitle);
             addParameter(contentBuilder, "incident_description", report.description);
             addParameter(contentBuilder, "incident_category", report.incidentCategory.getName());
-            addParameter(contentBuilder, "incident_date",
-                DateFormatUtils.format(report.incidentDate, "M/dd/yyyy"));
+            addParameter(contentBuilder, "incident_date", report.getIncidentDateForUshahidi());
             addParameter(contentBuilder, "incident_hour", DateFormatUtils.format(report.incidentDate, "hh"));
             addParameter(contentBuilder, "incident_minute", DateFormatUtils.format(report.incidentDate, "mm"));
             addParameter(contentBuilder, "incident_ampm", DateFormatUtils.format(report.incidentDate, "a").toLowerCase());

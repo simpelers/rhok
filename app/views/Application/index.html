@@ -18,7 +18,7 @@
 				<tbody>
 				#{list items:all, as:'incident'}
 				<tr>
-				    <td>${incident.getIncidentDate()}</td>
+				    <td>${incident.getIncidentDateFormated()}</td>
 				    <td>${incident.incidentCategory.getName()}</td>
 				    <td>${incident.duration}</td>
 				    <td>${incident.location.getName()}</td>

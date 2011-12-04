@@ -3,6 +3,8 @@ package models;
 import java.util.*;
 import javax.persistence.*;
 
+import org.apache.commons.lang.time.DateFormatUtils;
+
 import controllers.Application;
  
 import play.db.jpa.*;
@@ -41,7 +43,12 @@ public class Incident extends Model {
         User = user;
     }
     
-    public String getIncidentDate()
+    public String getIncidentDateForUshahidi()
+    {
+        return DateFormatUtils.format(incidentDate, "M/dd/yyyy");
+    }
+    
+    public String getIncidentDateFormated()
     {
         Date date = new Date(incidentDate);
         return date.toString();
