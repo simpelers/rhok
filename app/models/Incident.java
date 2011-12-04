@@ -45,12 +45,12 @@ public class Incident extends Model {
         return date.toString();
     }
     
-    /*
+    
     @PostPersist
     public void test()
     {
+        System.out.println("hihi");
         
         
-        
-    }*/
+    }
 }
