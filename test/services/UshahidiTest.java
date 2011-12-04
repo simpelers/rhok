@@ -1,5 +1,8 @@
 package services;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import models.Incident;
 import models.IncidentCategory;
 import models.Location;
@@ -24,11 +27,13 @@ public class UshahidiTest
     @Test
     public void testStoreIncident() throws Exception
     {
-        Ushahidi ushahidi = new Ushahidi("https://simpelers.crowdmap.com/api", "andrew@tillnow.com", "qazwsx");
+ 
+        Calendar calendar = Calendar.getInstance();
+
+    	Ushahidi ushahidi = new Ushahidi("https://simpelers.crowdmap.com/api", "andrew@tillnow.com", "qazwsx");
         ushahidi.storeIncident(
-            new Incident(new IncidentCategory("Fire", 60), "testtitle", "description",
-                System.currentTimeMillis(),
-                45, new Location("FarAway", 45.00, 49.00), "North",
+            new Incident(new IncidentCategory("Fire", 60), "testtitle", "description", calendar.getTime(),
+                45L, new Location("FarAway", 45.00, 49.00), "North",
                 new User("test", "api", "pass", "514", true, null)));
     }
 
