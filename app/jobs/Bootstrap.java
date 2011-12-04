@@ -27,9 +27,9 @@ public class Bootstrap extends Job {
         user2.save();
         
         
-        Incident i = new Incident(cat1, "Shoots", "Several shoots were heard.", (System.currentTimeMillis() - 1000000L), null, lastRun, l, null, user1);
+        Incident i = new Incident(cat1, "Shoots", "Several shoots were heard.", (System.currentTimeMillis() - 1000000L), 75, l, "North", user1);
         i.save();
-        Incident i2 = new Incident(cat2, "Tanks burning", "A class has left one tank on fire.", (System.currentTimeMillis() - 300000L), null, lastRun, l2, null, user1);
+        Incident i2 = new Incident(cat2, "Tanks burning", "A class has left one tank on fire.", (System.currentTimeMillis() - 300000L), 200, l2, "South", user1);
         i2.save();
     }
     

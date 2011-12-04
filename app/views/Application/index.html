@@ -11,7 +11,7 @@
                         <th>Duration (Mins)</th>
                         <th class="header headerSortUp">Location</th>
                         <th>Direction</th>
-                        <th>Comments</th>
+                        <th>Description</th>
                         <th></th>
 					</tr>
 				</thead>
@@ -20,6 +20,10 @@
 				<tr>
 				    <td>${incident.getIncidentDate()}</td>
 				    <td>${incident.incidentCategory.getName()}</td>
+				    <td>${incident.duration}</td>
+				    <td>${incident.location.getName()}</td>
+				    <td>${incident.direction}</td>
+				    <td>${incident.description}</td>
 				
 				</tr>
 				#{/list}
