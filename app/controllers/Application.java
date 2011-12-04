@@ -57,7 +57,16 @@ public class Application extends Controller
     		List<Incident> all = Incident.find("order by incidentDate desc").fetch();
             String mapsApiKey = "AIzaSyCnQ1Mxs0qi9g26mYEF_OgxNvnY-eGm5Uw";//USHAHIDI.getGoogleMapsApiKey();
 
-			render(all, mapsApiKey);
+            if (loggedInUser != null)
+            {
+                String user = loggedInUser.getFirstName();
+
+                render(user, mapsApiKey, all);
+            }
+            else
+            {
+                render(mapsApiKey, loggedInUser, all);
+            }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

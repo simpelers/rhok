@@ -71,7 +71,8 @@
     </div>
 </div>
 
-<a href="/">List view</a>
+#{if user}
+<a href="/index">List view</a>
 
 <div class="container-fluid">
 
@@ -83,6 +84,10 @@
         <p>&copy; Random Hacks of Kindness MTL 2011</p>
     </footer>
 </div>
+#{/if}
+#{else}
+      <a href="/">Please log in.</a>
+#{/else}
 
 </body>
 </html>
