@@ -9,10 +9,14 @@ import java.util.List;
 
 import models.Incident;
 import play.mvc.Controller;
+import services.Ushahidi;
 
-public class Application extends Controller {
+public class Application extends Controller 
+{
+    public static final Ushahidi USHAHIDI = new Ushahidi("https://simpelers.crowdmap.com/api", "andrew@tillnow.com", "qazwsx");
 
-    public static void index() {
+    public static void index() 
+    {
     	try {
     		List<Incident> all = Incident.findAll();
     		

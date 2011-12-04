@@ -2,6 +2,8 @@ package models;
  
 import java.util.*;
 import javax.persistence.*;
+
+import controllers.Application;
  
 import play.db.jpa.*;
  
@@ -49,8 +51,6 @@ public class Incident extends Model {
     @PostPersist
     public void test()
     {
-        System.out.println("hihi");
-        
-        
+        Application.USHAHIDI.storeIncident(this);        
     }
 }
