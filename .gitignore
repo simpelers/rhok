@@ -12,6 +12,7 @@ modules/crud
 *.iml
 *.ipr
 *.iws
+.idea
 .classpath
 .project
 .settings/
