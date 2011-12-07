@@ -34,12 +34,12 @@
 
         #{list items:all, as:'incident'}
 
-        var image = '@@{'public/images/icon_riot.png'}';
+        var image = "@@{'public/images/icon_riot.png'}";
         if ("${incident.incidentCategory.getName()}" == "Gunshot") {
-           image = '@@{'public/images/icon_gunshot.png'}';
+           image = "@@{'public/images/icon_gunshot.png'}";
         }
         else if ("${incident.incidentCategory.getName()}" == "Violence") {
-           image = '@@{'public/images/icon_violence.png'}';
+           image = "@@{'public/images/icon_violence.png'}";
         }
         var myLatLng = new google.maps.LatLng(${incident.location.getLatitude()}, ${incident.location.getLongitude()});
         var incidentMarker = new google.maps.Marker({
