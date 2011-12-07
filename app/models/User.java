@@ -6,6 +6,7 @@ import javax.persistence.*;
 import play.db.jpa.*;
  
 @Entity
+@Table(schema="public", name = "user")
 public class User extends Model {
  
 	private Incident incident;
