@@ -1,6 +1,3 @@
-/**
- * 
- */
 package controllers;
 
 import models.Location;

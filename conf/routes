@@ -3,8 +3,8 @@
 # ~~~~
 
 # Home page
-GET     /                                      Application.login
-GET     /index                                 Application.index
+GET     /                                      Application.main
+GET     /main                                  Application.main
 GET     /incident/new                          Application.newReport
 GET     /map                                   Application.mapview
 

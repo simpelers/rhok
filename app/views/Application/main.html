@@ -1,6 +1,6 @@
 #{extends 'main.html' /} #{set title:'Home' /}
 
-#{if user}
+#{if loggedInUser}
         <a href="/map">Map view</a>
 <!-- Example row of columns -->
         <div class="row">
@@ -38,5 +38,5 @@
 
 #{/if}
 #{else}
-      <a href="/">Please log in.</a>     
+      <a href="/login">Please log in.</a>     
 #{/else}

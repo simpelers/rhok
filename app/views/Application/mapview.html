@@ -62,7 +62,7 @@
         <div class="container-fluid">
             <a class="brand" href="#">Haiti Security</a>
             <ul class="nav">
-                <li><a href="/">Home</a></li>
+                <li><a href="/main">Home</a></li>
                 <li><a href="/incident/new">Submit a report</a></li>
                 <li><a href="/admin">Admin</a></li>
             </ul>
@@ -71,8 +71,8 @@
     </div>
 </div>
 
-#{if user}
-<a href="/index">List view</a>
+#{if loggedInUser}
+<a href="/main">List view</a>
 
 <div class="container-fluid">
 

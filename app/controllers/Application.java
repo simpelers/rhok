@@ -20,26 +20,28 @@ import models.User;
 import play.db.Model;
 import play.exceptions.TemplateNotFoundException;
 import play.mvc.Controller;
+import play.mvc.With;
 import services.Ushahidi;
 
-public class Application extends Controller 
+public class Application extends BaseController 
 {
     public static final Ushahidi USHAHIDI = new Ushahidi("https://simpelers.crowdmap.com/api", "andrew@tillnow.com", "qazwsx");
-    public static boolean isLoggedIn = false;
-    public static User loggedInUser = null;
-
+    
     public static void index() 
     {
-        
+        render();
+    }
+    
+    public static void main() 
+    {
+        User loggedInUser = Security.getConnectedUser();
 
         try {
             List<Incident> all = Incident.find("order by incidentDate desc").fetch();
             
             if (loggedInUser != null)
             {
-                String user = loggedInUser.getFirstName();
-                
-                render(user, loggedInUser, all);                
+                render(loggedInUser, all);                
             }
             else
             {
@@ -53,15 +55,15 @@ public class Application extends Controller
     
     public static void mapview()
     {
+        User loggedInUser = Security.getConnectedUser();
+        
     	try {
     		List<Incident> all = Incident.find("order by incidentDate desc").fetch();
             String mapsApiKey = "AIzaSyCnQ1Mxs0qi9g26mYEF_OgxNvnY-eGm5Uw";//USHAHIDI.getGoogleMapsApiKey();
 
             if (loggedInUser != null)
             {
-                String user = loggedInUser.getFirstName();
-
-                render(user, mapsApiKey, all);
+                render(loggedInUser, mapsApiKey, all);
             }
             else
             {
@@ -74,6 +76,8 @@ public class Application extends Controller
     
     public static void newReport() throws Exception
     {
+        User loggedInUser = Security.getConnectedUser();
+        
         Incident incident = new Incident();
         List<IncidentCategory> categories = IncidentCategory.findAll();
         List<Location> locations = Location.findAll();
@@ -81,9 +85,7 @@ public class Application extends Controller
         {
             if (loggedInUser != null)
             {
-                String user = loggedInUser.getFirstName();
-                
-                render(user, incident, categories, locations);                
+                render(loggedInUser, incident, categories, locations);                
             }
             else
             {
@@ -94,31 +96,8 @@ public class Application extends Controller
             e.printStackTrace();
         }
     }
-    
-    public static void login() throws Exception
-    {
-        //User user = new User();
-        
-        render(loggedInUser);
-    }
-    
-    public static void loginUser(String firstname, String aPassword) throws Exception
-    {
-        User user = Authentication.getUser(firstname, aPassword);
-        
-        if (user == null)
-        {
-            isLoggedIn = false;
-            login();
-            return;
-        }
-        
-        loggedInUser = user;
-        
-        index();
-    }
-    public static void saveReport(Long categoryId, String title, Long locationId, String content, String duration,  String direction) throws Exception
 
+    public static void saveReport(Long categoryId, String title, Long locationId, String content, String duration,  String direction) throws Exception
     {
         IncidentCategory cat = (IncidentCategory) IncidentCategory.findById(categoryId);
         Incident i = new Incident(cat,
