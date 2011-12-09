@@ -27,12 +27,7 @@ public class Application extends BaseController
 {
     public static final Ushahidi USHAHIDI = new Ushahidi("https://simpelers.crowdmap.com/api", "andrew@tillnow.com", "qazwsx");
     
-    public static void index() 
-    {
-        render();
-    }
-    
-    public static void main() 
+    public static void main()
     {
         User loggedInUser = Security.getConnectedUser();
 
@@ -116,7 +111,7 @@ public class Application extends BaseController
         }
         // Save
         i.save();
-        index();
+        main();
     }
     
     private static long getEstDuration(IncidentCategory cat, String estDuration)
